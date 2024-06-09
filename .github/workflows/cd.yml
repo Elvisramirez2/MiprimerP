@@ -1,0 +1,17 @@
+name: CI
+ 
+on:
+  push:
+    branches:
+      - main
+ 
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+ 
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+ 
+      - name: Deploy to Surge
+        run: surge ./public https://example.surge.sh --token ${{ secrets.SURGE_TOKEN }}
